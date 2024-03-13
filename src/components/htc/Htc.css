@@ -1,0 +1,59 @@
+#htc {
+    background-color: #32ded50f;
+    padding-top: 0.8rem;
+}
+
+
+#htc h2 {
+    margin-top: 1rem;
+}
+
+.htc_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.htc__items {
+    background-color: #32ded50f;
+    border-radius: 1rem;
+    border-color: 1px solid black;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    padding: 0 0.8rem 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.htc__items-image img {
+    overflow: hidden;
+    height: 80px;
+    vertical-align: middle;
+    width: 80px;
+    margin: 0.8rem 0 1.8rem 0;
+}
+
+
+/* =====MEDIA QUERIES (MEDIUM DEVICES)====== */
+
+@media screen and (max-width: 1024px) {
+    .htc_container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =====MEDIA QUERIES (SMALL DEVICES)====== */
+
+@media screen and (max-width: 600px) {
+
+    .htc_container {
+        grid-template-columns: 1fr;
+        margin: 1rem 1rem;
+        padding: 1rem 1rem;
+    }
+
+     
+    .htc__items {
+        margin: 0rem 2rem;
+     }
+}
+

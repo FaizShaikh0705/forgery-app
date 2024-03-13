@@ -1,0 +1,57 @@
+.navbar1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 13rem 1rem;
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    border-radius: 0  0 5rem  5rem;
+    overflow: hidden;
+}
+
+.navbar_menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 1rem 3rem 0 1rem;
+}
+
+.navbar2 {
+background: rgba(0 0, 0, 0.3);
+backdrop-filter: blur(15px);
+z-index: 1;
+}
+
+.logo_img1 {
+    width: 20%;
+}
+
+/* =====MEDIA QUERIES (MEDIUM DEVICES)====== */
+
+@media screen and (max-width: 1024px) {
+   .navbar1 {
+    padding: 1rem 4rem 1rem;
+   }
+   .logo_img1 {
+    width: 25%;
+}
+
+.navbar_menu {
+    display: none;
+}
+
+}
+
+
+/* =====MEDIA QUERIES (SMALL DEVICES)====== */
+
+@media screen and (max-width: 600px) {
+    .logo_img1 {
+        width: 25%;
+    }
+    .navbar1 {
+        padding: 0.5rem 1rem 0.5rem;
+       }
+
+}
+

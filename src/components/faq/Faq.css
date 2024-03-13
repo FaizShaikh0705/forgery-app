@@ -1,0 +1,53 @@
+.faq_img {
+    width: 60%;
+    height: 40%;
+    margin-left: 21rem;
+    margin-top: 4rem;
+}
+
+.faq_title {
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.faq_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 2rem;
+}
+
+.faq_cards {
+    padding: 2rem;
+}
+
+.faq_qtn {
+    color: dodgerblue;
+}
+
+/* =====MEDIA QUERIES (MEDIUM DEVICES)====== */
+
+@media screen and (max-width: 1024px) {
+    .faq_img {
+        display: block;
+        justify-content: center;
+        margin-left: 10rem;
+    }
+
+    .faq_container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =====MEDIA QUERIES (SMALL DEVICES)====== */
+
+@media screen and (max-width: 600px) {
+    .faq_img {
+        margin-left: 6rem;
+    }
+
+    .faq_container {
+        grid-template-columns: 1fr;
+    }
+}

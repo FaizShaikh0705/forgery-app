@@ -1,0 +1,40 @@
+#about {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+#about p {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+#about h5 {
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.about_para {
+    display: block;
+    text-align: start;
+    padding-left: 15rem;
+}
+
+.about-info {
+    margin: 0 0 4rem 0;   
+}
+
+
+/* =====MEDIA QUERIES (MEDIUM DEVICES)====== */
+
+@media screen and (max-width: 1024px) {
+    .about_para {
+        padding-left: 3rem;
+    }
+}
+
+
+/* =====MEDIA QUERIES (SMALL DEVICES)====== */
+
+@media screen and (max-width: 600px) {}

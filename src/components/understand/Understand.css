@@ -1,0 +1,42 @@
+.main_page {
+    background-color: #BFACE2;
+}
+
+.understand_head {
+    padding: 4rem 0 2rem;
+}
+
+.para_understand {
+    display: block;
+    text-align: left;
+}
+
+.para_head {
+    display: block;
+    text-align: left;
+}
+
+.para_understand li {
+    list-style: disc;
+}
+
+.main_page {
+    padding: 0 22rem 2rem;
+}
+
+/* =====MEDIA QUERIES (MEDIUM DEVICES)====== */
+
+@media screen and (max-width: 1024px) {
+    .understand_head {
+        padding: 4rem 0rem 2rem;
+    }
+
+    .main_page {
+        padding: 2rem 2rem 2rem;
+    }
+}
+
+
+/* =====MEDIA QUERIES (SMALL DEVICES)====== */
+
+@media screen and (max-width: 600px) {}
