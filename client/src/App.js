@@ -19,7 +19,7 @@ function App() {
         </Switch>
       </Router>
       <Header />
-      <About />
+      {/* <About /> */}
       <Faq />
       <Footer /></>
   );

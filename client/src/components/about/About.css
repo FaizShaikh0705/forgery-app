@@ -3,6 +3,7 @@
     text-align: center;
 }
 
+
 #about p {
     font-size: 16px;
     font-weight: 600;
@@ -18,7 +19,7 @@
 .about_para {
     display: block;
     text-align: start;
-    padding-left: 15rem;
+    /* padding-left: 15rem; */
 }
 
 .about-info {

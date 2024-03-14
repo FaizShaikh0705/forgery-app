@@ -23,52 +23,7 @@ const ImageToTextConverter = () => {
         reader.readAsDataURL(file);
     };
 
-    const convertImageToText = async (imageUrl) => {
-        const { data } = await Tesseract.recognize(imageUrl, 'eng');
-        const extractedText = data.text.trim();
-        setResult(extractedText);
-        // setRedirectLink(getRedirectLink(extractedText));
-        findLinkText(extractedText);
-    };
 
-    // const getRedirectLink = (text) => {
-    //     // Implement your logic to generate the redirect link based on the extracted text
-    //     // Here's a simple example that generates a Google search link
-    //     const encodedText = encodeURIComponent(text);
-    //     return `https://www.google.com/search?q=${encodedText}`;
-    // };
-
-    const findLinkText = (text) => {
-        const regex = /(https?:\/\/[^\s]+)/g;
-        const matches = text.match(regex);
-        if (matches && matches.length > 0) {
-            const linkText = matches[0];
-            setLinkText(linkText);
-            const encodedText = encodeURIComponent(text);
-            return `https://www.google.com/search?q=${encodedText}`;
-        } else {
-            setLinkText('');
-        }
-    };
-
-    const handleTranslate = async () => {
-        try {
-            const response = await fetch(
-                `https://translation.googleapis.com/language/translate/v2?key=YOUR_API_KEY&q=${encodeURIComponent(
-                    result
-                )}&target=${selectedLanguage}`
-            );
-            const { data } = await response.json();
-            const translatedText = data.translations[0].translatedText;
-            setTranslatedText(translatedText);
-        } catch (error) {
-            console.error('Translation error:', error);
-        }
-    };
-
-    const handleLanguageChange = (e) => {
-        setSelectedLanguage(e.target.value);
-    };
 
     return (
         <section id='Header' style={{ backgroundImage: `url(${bg1})`, backgroundRepeat: "no-repeat", backgroundSize: 'cover', maxHeight: '100%' }}>
@@ -99,22 +54,6 @@ const ImageToTextConverter = () => {
                                             <a href={linkText} target="_blank" rel="noopener noreferrer">
                                                 {linkText}
                                             </a>
-                                        </div>
-                                    )}
-                                    <div>
-                                        <label htmlFor="language">Translate to:</label>
-                                        <select id="language" value={selectedLanguage} onChange={handleLanguageChange}>
-                                            <option value="en">English</option>
-                                            <option value="es">Spanish</option>
-                                            <option value="fr">French</option>
-                                            {/* Add more language options as needed */}
-                                        </select>
-                                        <button onClick={handleTranslate}>Translate</button>
-                                    </div>
-                                    {translatedText && (
-                                        <div>
-                                            <h2>Translated Text:</h2>
-                                            <p>{translatedText}</p>
                                         </div>
                                     )}
                                 </div>
