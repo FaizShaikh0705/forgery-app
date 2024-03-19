@@ -19,7 +19,7 @@ const Header = () => {
             const formData = new FormData();
             formData.append('image', image);
 
-            const response = await axios.post('http://localhost:3001/process-image', formData, {
+            const response = await axios.post('http://localhost:3002/process-image', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

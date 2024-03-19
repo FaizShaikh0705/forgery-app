@@ -1,34 +1,26 @@
 import React, { useState, useContext } from 'react';
-// import fire from '../../config/Fire';
-// import { AuthContext } from '../../context/Auth';
 import { withRouter, Redirect, Link } from 'react-router-dom';
 import logo from '../../assets/forgery.png';
 import './Login.css';
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/apiCalls";
 
 
 function Login(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error, currentUser } = useSelector((state) => state.user);
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [fireErrors, setFireErrors] = useState("");
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch, { email, password });
+  };
 
-  // const login = (event) => {
-  //   event.preventDefault();
-  //   fire.auth().signInWithEmailAndPassword(email, password)
-  //    .catch((error) => {
-  //       setFireErrors(error.message)
-  //    })
-  // }
-
-  // const { currentUser } = useContext(AuthContext);
-
-  // if (currentUser) {
-  //   return <Redirect to="/home" />;
-  // }
-
-  // let errorNotification = fireErrors ? 
-  // (<div className="alert alert-danger" role="alert">{fireErrors}</div>) : null;
+  if (currentUser) {
+    return <Redirect to="/home" />;
+  }
 
   return (
     <section className="auth py-4">
@@ -45,21 +37,21 @@ function Login(props) {
                 {/* <div>{errorNotification}</div> */}
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
-                  <input type="text" className="form-control" id="email" name="email" placeholder="Enter a email" />
+                  <input type="text" className="form-control" id="email" value={email} name="email" placeholder="Enter a email" onChange={(event) => setEmail(event.target.value)} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
-                  <input type="password" className="form-control" id="password" name="password" placeholder="Enter a password" />
+                  <input type="password" className="form-control" id="password"  value={password} name="password" placeholder="Enter a password" onChange={(event) => setPassword(event.target.value)} />
                 </div>
                 <div className="form-group">
-                  <button className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Login Now</button>
+                  <button  href="/" className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Login Now</button>
                 </div>
                 <div className="or py-3">
                   <h3><span>or</span></h3>
                 </div>
                 <div className="row pt-3">
                   <div className="col-lg-12 text-center">
-                    <p class="text-center"> Don't have an account?  <a to="/safari-kids-SignUp">Sign up</a></p>
+                    <p class="text-center"> Don't have an account?  <a href="/signUp">Sign up</a></p>
                   </div>
                 </div>
               </div>

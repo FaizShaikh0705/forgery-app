@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
-// import fire from '../../config/Fire';
-// import { AuthContext } from '../../context/Auth';
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../redux/apiCalls";
 import { withRouter, Redirect, Link } from 'react-router-dom';
 import logo from '../../assets/forgery.png';
 import './SignUp.css';
@@ -8,49 +8,23 @@ import './SignUp.css';
 
 function SignUp(props) {
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [fireErrors, setFireErrors] = useState("");
-  // const [name, setName] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const dispatch = useDispatch();
+  const { isFetching, error, currentUser } = useSelector((state) => state.user);
 
 
-  // const register = (event) => {
-  //   event.preventDefault();
-
-  //   var errs = "";
-  //   if(name == "") {errs += "Please provide name."}
-
-  //   if(errs == ""){
-  //     fire.auth().createUserWithEmailAndPassword(email, password)
-  //     .then((userCredential) => {
-  //       return userCredential.user.updateProfile({
-  //         displayName: name,
-  //       });
-
-  //     })
-  //     .catch((error) => {
-  //       if (error.code === "auth/email-already-in-use") {
-  //         setFireErrors("This email has already been registered, please <a href='/login' className='auth-error-msg'>click here</a> to log in");
-  //       }
-  //       else {
-  //         setFireErrors(error.message);
-  //       }
-  //     })
-  //   }else{
-  //     setFireErrors(errs);
-  //   }
-  // }
-
-  // const { currentUser } = useContext(AuthContext);
-
-  // if (currentUser) {
-  //   return <Redirect to="/home" />;
-  // }
+  const handleClick = (e) => {
+    e.preventDefault();
+    register(dispatch, { username, password, email });
+  };
 
 
+  if (currentUser) {
+    return <Redirect to="/home" />;
+  }
 
-  // let errorNotification = fireErrors ? 
-  // (<div className="alert alert-danger" role="alert">{fireErrors}</div>) : null;
 
   return (
     <section className="auth py-4">
@@ -67,18 +41,18 @@ function SignUp(props) {
                 {/* <div>{errorNotification}</div> */}
                 <div className="form-group">
                   <label htmlFor="name">Full Name</label>
-                  <input type="text" className="form-control" id="name" name="name" placeholder="Enter a name" />
+                  <input type="text" className="form-control" value={username} id="name" name="name" placeholder="Enter a name" onChange={(event) => setUsername(event.target.value)} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
-                  <input type="text" className="form-control" id="email" name="email" placeholder="Enter a email" />
+                  <input type="text" className="form-control" value={email} id="email" name="email" placeholder="Enter a email" onChange={(event) => setEmail(event.target.value)} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
-                  <input type="password" className="form-control" id="password" name="password" placeholder="Enter a password" />
+                  <input type="password" className="form-control" value={password} id="password" name="password" placeholder="Enter a password" onChange={(event) => setPassword(event.target.value)} />
                 </div>
                 <div className="form-group">
-                  <button className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up Now</button>
+                  <button onClick={handleClick} className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up Now</button>
                 </div>
                 <div className="or py-3">
                   <h3><span>or</span></h3>
