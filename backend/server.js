@@ -3,8 +3,11 @@ const express = require('express');
 const { spawn } = require('child_process');
 const multer = require('multer');
 const app = express();
-const port = 3001;
+const port = 3002;
 const cors = require('cors');
+
+// const userRoutes = require('./routes/userRoutes.js');
+// const authRoutes = require('./routes/authRoutes.js')
 
 
 // Multer configuration
@@ -22,10 +25,13 @@ const upload = multer({ storage: storage });
 app.use(cors());
 app.use(express.json());
 
+// app.use('/api/auth', authRoutes)
+// app.use('/api/users', userRoutes)
+
 app.post('/process-image', upload.single('image'), (req, res) => {
     const imagePath = req.file.path;
 
-    const pythonProcess = spawn('python3', ['pancard.py']);
+    const pythonProcess = spawn('python3', ['pancard.py', imagePath]);
 
     pythonProcess.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);

@@ -1,10 +1,13 @@
+import sys 
 import cv2
 import pytesseract
 from PIL import Image
 import matplotlib.pyplot as plt
 
+image_path = sys.argv[1]
+
 # Read text from image using pytesseract
-img = cv2.imread('./upload/fake_pancard.png')
+img = cv2.imread(image_path)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Perform OCR using pytesseract
@@ -15,7 +18,7 @@ print("Extracted Text:")
 print(extracted_text)
 
 # Load image using OpenCV
-img = cv2.imread('./upload/fake_pancard.png')
+img = cv2.imread(image_path)
 
 # Perform face detection using OpenCV
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
