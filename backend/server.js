@@ -44,6 +44,38 @@ app.post('/process-image', upload.single('image'), (req, res) => {
     });
 });
 
+app.post('/process-images', upload.single('image'), (req, res) => {
+    const imagePath = req.file.path;
+
+    const pythonProcess = spawn('python3', ['aadhar.py', imagePath]);
+
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
+        res.send(data.toString());
+    });
+
+    pythonProcess.stderr.on('data', (data) => {
+        console.error(`stderr: ${data}`);
+        res.status(500).send('Error processing image');
+    });
+});
+
+app.post('/process-img', upload.single('image'), (req, res) => {
+    const imagePath = req.file.path;
+
+    const pythonProcess = spawn('python3', ['XImarksheet.py', imagePath]);
+
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
+        res.send(data.toString());
+    });
+
+    pythonProcess.stderr.on('data', (data) => {
+        console.error(`stderr: ${data}`);
+        res.status(500).send('Error processing image');
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

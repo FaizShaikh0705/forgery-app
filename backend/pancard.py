@@ -15,7 +15,7 @@ extracted_text = pytesseract.image_to_string(gray, lang='eng')
 
 # Display the extracted text
 print("Extracted Text:")
-print(extracted_text)
+# print(extracted_text)
 
 # Load image using OpenCV
 img = cv2.imread(image_path)
