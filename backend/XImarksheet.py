@@ -24,7 +24,7 @@ print(extracted_text)
 document_legit = False
 
 # List of keywords/phrases indicating a legitimate 10th marksheet
-legit_keywords = ['MUMBAI DIVISIONAL BOARD', 'SECONDARY SCHOOL CERTIFICATE EXAMINATION-STATEMENT OF MARKS', 'certificate', 'marksheet']
+legit_keywords = ['mumbai divisional board', 'secondary school certificate examination-statement of marks']
 
 # Check for specific keywords or patterns in the extracted text
 for keyword in legit_keywords:
