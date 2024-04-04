@@ -5,6 +5,8 @@ import bg1 from '../../assets/bg2.jpg'
 import axios from 'axios';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { useSelector } from 'react-redux';
+
 
 
 const Header = () => {
@@ -15,6 +17,7 @@ const Header = () => {
     const handleImageChange = (event) => {
         setImage(event.target.files[0]);
     };
+    
 
     const handleImageUpload = async () => {
         try {
@@ -67,6 +70,23 @@ const Header = () => {
         }
     };
 
+    const handleImageUpload3 = async () => {
+        try {
+            const formData = new FormData();
+            formData.append('image', image);
+
+            const response = await axios.post('http://localhost:3002/process-imgs', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            setResponse(response.data);
+        } catch (error) {
+            console.error('Error uploading image:', error);
+        }
+    };
+
     return (
         <section id='Header' style={{ backgroundImage: `url(${bg1})`, backgroundRepeat: "no-repeat", backgroundSize: 'cover', maxHeight: '100%' }}>
             <Nav />
@@ -79,6 +99,7 @@ const Header = () => {
                         <TabList>
                             <Tab>PanCard</Tab>
                             <Tab>AadharCard</Tab>
+                            <Tab>Driving License</Tab>
                             <Tab>10th Marksheet</Tab>
                         </TabList>
 
@@ -98,6 +119,18 @@ const Header = () => {
                             <div className='panel'>
                                 <input type="file" accept="image/*" onChange={handleImageChange} />
                                 <button onClick={handleImageUpload1}>Upload Image</button>
+                                {response && (
+                                    <div>
+                                        <h2>Response:</h2>
+                                        <p>{response}</p>
+                                    </div>
+                                )}
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            <div className='panel'>
+                                <input type="file" accept="image/*" onChange={handleImageChange} />
+                                <button onClick={handleImageUpload3}>Upload Image</button>
                                 {response && (
                                     <div>
                                         <h2>Response:</h2>

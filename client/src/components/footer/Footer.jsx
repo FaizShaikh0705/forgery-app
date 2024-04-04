@@ -19,12 +19,12 @@ const Footer = () => {
         </div>
         <div className="footer_3">
           <a href="#footer" className='contact_1'>CONTACT</a>
-          <h5 className='contact_menu'>Faiz Shaikh</h5>
-          <h5>Faizshaikh0705@gmail.com</h5>
+          <h5 className='contact_menu'>123</h5>
+          <h5>123@gmail.com</h5>
         </div>
       </div>
       <div className="footer__copyright">
-          <h5>&copy; Faiz Shaikh. All rights reserved. </h5>
+          <h5>&copy;. All rights reserved. </h5>
         </div>
     </footer>
   )

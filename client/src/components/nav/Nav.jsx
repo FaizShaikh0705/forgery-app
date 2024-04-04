@@ -124,8 +124,8 @@ const Nav = () => {
       <img src={IMG1} alt="logo_img1" className='logo_img1' />
       <div className="navbar_options">
         <ul className='navbar_menu'>
-          <li><a href="#" className='btns'>Home</a></li>
-          <li><a href="#about" className='btns'>About</a></li>
+          <li><a href="/" className='btns'>Home</a></li>
+          <li><a href="/Login" className='btns'>Login</a></li>
           {/* Add more language buttons as needed */}
         </ul>
       </div>
